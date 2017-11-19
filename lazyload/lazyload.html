@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Lazyload</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const delt = 100;
+        // 函数抖动
+        const debounceContainer = () => {
+            let timer;
+            return (method) => {
+                clearTimeout(timer);
+                timer = setTimeout(method, delt);
+            }
+        };
+        const debounce = debounceContainer();
+        // 函数节流
+        const throttleContainer = () => {
+            let preTime = new Date().getTime();
+            return (method) => {
+                const time = new Date().getTime();
+                if (time - preTime > delt) {
+                    preTime = time;
+                    method();
+                }
+            }
+        };
+        const throttle = throttleContainer();
+
+        const imgFactory = (src) => {
+            // new img
+            const newImage = document.createElement('img');
+            newImage['data-src'] = src;
+            newImage.className = 'lazyload';
+            newImage.style.display = 'block';
+            newImage.style.margin = '10px';
+            newImage.alt = 'lazyload';
+            newImage.src = './init.jpg';
+            newImage.width = 200;
+            newImage.height = 150;
+            return newImage;
+        };
+
+        const getLazyloadImg = () => {
+            return document.querySelectorAll('img.lazyload');
+        };
+
+        // add onscroll
+        let temp = -1
+        const scroll = () => {
+            const lazyImgArr = getLazyloadImg();
+            const scrollHeight = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop; // 滚动的高度
+            const bodyHeight = window.innerHeight; // body（页面）可见区域的总高度
+            if(temp < scrollHeight) { // 为true表示是向下滚动，否则是向上滚动，不需要执行动作。
+                for(let k = 0; k < lazyImgArr.length; k += 1) {
+                    const imgTop = lazyImgArr[k].offsetTop; // 1305（图片纵坐标
+
+                    if((imgTop - scrollHeight) <= bodyHeight) {
+                        lazyImgArr[k].src = lazyImgArr[k]['data-src'];
+                        lazyImgArr[k].classList.remove('lazyload');
+                    }
+                }
+            }
+            temp = scrollHeight;
+        };
+        // add image to html
+       window.onload = () => {
+            const root = document.getElementById('root');
+            for (let i = 0; i < 100; i += 1) {
+                const img = imgFactory('lazyload.png');
+                root.insertAdjacentElement('afterBegin', img);
+            }
+            scroll();
+        };
+        
+        document.addEventListener('scroll', throttle.bind(window, scroll));
+    </script>
+</body>
+</html>
