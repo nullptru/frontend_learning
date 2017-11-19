@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Water wave animation with css</title>
+  <style>
+  .container span {
+    z-index: 100;
+    position: relative;
+  }
+
+  .container {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    position: relative; /* 作为before的父节点 */
+    background-color: #f2f2f2;
+    overflow: hidden; /* 隐藏超出部分的before内容 */
+    transition: 0.3s all ease-in-out; /* 背景渐变动画 */
+  }
+
+  .container:hover, .container::before {
+      background-color: #d3d3d3; /* 设置悬浮，before的背景色相同，container背景色有渐变效果，before背景色不变，产生波纹式渐变效果 */
+  }
+
+  .container::before {
+      width: 0%; /* 动画属性 */
+      height: 200%;
+      display: block;
+      position: absolute; /* 定位在右边，从右往左波纹 */
+      top: 0;
+      right: 0;
+      content: '';
+      transition: 0.3s all ease-in-out;
+  }
+
+  .container:hover::before {
+      width: 110%;
+  }
+
+  /* 分割线 */
+  .container2 {
+    display:inline-block;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .container2::after {
+      background-color: rgba(255,255,255,0.87); /* 波纹颜色 */
+  }
+
+  .container2:active::after {
+      opacity: 1;
+      width: 0;
+      height: 0;
+      right: 50%; /* 设置终止点位置 */
+      top: 50%;
+      transition-duration: 0s; /* 取消波纹缩小动画 */
+  }
+
+  .container2::after {
+      width: 200%;
+      height: 400%;
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      top: -150%; /* 根据width height属性，计算top和right将其居中（after宽高400, container宽200，高100，右移100，上移动150）*/
+      right: -50%;
+      content: '';
+      opacity: 0; /* 初始透明 */
+      transition: 1s all;
+  }
+
+  body {
+    padding: 100px;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="container"><span>Hover</span></div>
+  <div>----------分割线----------</div>
+  <div class="container2">Click</div>
+</body>
+</html>
