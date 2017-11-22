@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>三栏式布局3种实现方式</title>
+  <style>
+    .section {
+      margin: 10px 0;
+    }
+    .title {
+      background: lemonchiffon;
+      height: 30px;
+    }
+    header {
+      background: grey;
+    }
+    footer {
+      background: lightgray
+    }
+    .main {
+      width: 100%;
+      height: inherit;
+      background: red;
+    }
+    .left {
+      width: 200px;
+      height: inherit;
+      background: lightblue;
+    }
+    .right {
+      width: 200px;
+      height: inherit;
+      background: lightskyblue;
+    }
+
+    /*圣杯*/
+    .section1 .wrapper {
+      padding: 0 200px 0 200px;
+      height: 200px;
+    }
+    .section1 .col {
+      position: relative;
+      float: left;
+    }
+    .section1 .left {
+      margin-left: -100%;
+      left: -200px;
+    }
+    .section1 .right {
+      margin-left: -200px;
+      right: -200px;
+    }
+
+    /* 双飞翼 */
+    .section2 .wrapper {
+      height: 200px;
+      padding: 0;
+    }
+    .section2 .main-wrapper {
+      margin: 0 200px 0 200px;
+    }
+    .section2 .col {
+      float: left;
+    }
+    .section2 .left {
+      margin-left: -100%;
+    }
+    .section2 .right {
+      margin-left: -200px;
+    }
+
+    /* Flex 布局 */
+    .section3 .wrapper {
+      height: 200px;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    .section3 .main {
+      order: 2;
+    }
+    .section3 .left {
+      order: 1;
+      flex-shrink: 0;
+    }
+    .section3 .right {
+      order: 3;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <section class="section1">
+    <header class="title">圣杯布局</header>
+    <header>Header</header>
+    <section class="wrapper">
+      <section class="main col">Main</section>
+      <section class="left col">Left</section>
+      <section class="right col">Right</section>
+    </section>
+    <footer class="footer">Footer</footer>
+  </section>
+
+  <section class="section2">
+    <header class="title">双飞翼布局</header>
+    <header>Header</header>
+    <section class="wrapper">
+      <section class="main col">
+        <section class="main-wrapper">Main</section>
+      </section>
+      <section class="left col">Left</section>
+      <section class="right col">Right</section>
+    </section>
+    <footer class="footer">Footer</footer>
+  </section>
+
+  <section class="section3">
+      <header class="title">Flex布局</header>
+      <header>Header</header>
+      <section class="wrapper">
+        <section class="main">Main</section>
+        <section class="left">Left</section>
+        <section class="right">Right</section>
+      </section>
+      <footer class="footer">Footer</footer>
+    </section>
+</body>
+</html>
