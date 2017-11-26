@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeMirror</title>
+  <link rel="stylesheet" href="./index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.2/mode/markdown/markdown.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.2/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.2/theme/monokai.min.css" />
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.2/codemirror.min.js"></script>
+  <script>
+    var myCodeMirror = CodeMirror(document.body, {
+      value: "## test\n",
+      mode:  "markdown",
+      theme: 'monokai',
+    });
+  </script>
+</body>
+</html>
