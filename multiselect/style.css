@@ -1,0 +1,38 @@
+.multi-select {
+  position: relative;
+  width:200px
+}
+
+.select-input {
+  width: inherit;
+  height: 20px;
+}
+
+.toggle {
+  display: inline-block;
+  position: absolute;
+  right:  0;
+  top: 0;
+}
+
+.select-wrapper {
+  width: inherit;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.multi-select ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.multi-select ul > li {
+  border: 1px solid lightgrey;
+  border-top: none;
+}
+
+.multi-select ul > li:first-child {
+  border-top: 1px solid lightgrey;
+}
