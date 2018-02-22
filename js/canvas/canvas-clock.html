@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas Clock</title>
+</head>
+<body>
+  <canvas id="clock-canvas" style="background: #333" width="400" height="400" />
+  <script>
+    const clockCanvas = document.getElementById('clock-canvas');
+    const context = clockCanvas.getContext('2d');
+    let radius = clockCanvas.height / 2;
+    // Remaps (radius, radius) as (0,0) position on the canvas
+    context.translate(radius, radius);
+    radius = radius * 0.90;
+
+    const drawClock = (radius) => {
+      drawFace(context, radius);
+      drawNumber(context, radius);
+      drawTime(context, radius);
+
+      requestAnimationFrame(drawClock.bind(this, radius));
+    }
+
+    const drawFace = (ctx, radius) => {
+      // draw the clock panel
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      // draw the clock edge line
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+      const grad = ctx.createRadialGradient(0, 0, 0.95 * radius, 0, 0, 1.05 * radius);
+      grad.addColorStop(0, '#333');
+      grad.addColorStop(0.5, 'white');
+      grad.addColorStop(1, '#333');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius * 0.1;
+      ctx.stroke();
+      // draw center circle
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.05, 0, 2 * Math.PI);
+      ctx.fillStyle = '#333';
+      ctx.fill();
+    };
+
+    const drawNumber = (ctx, radius) => {
+      let angle;
+      ctx.font = radius * 0.15 + "px arial";
+      ctx.textBaseline="middle";
+      ctx.textAlign="center";
+      for (let i = 1; i < 13; i += 1) {
+        angle = i * Math.PI / 6;
+        // 采用先顺时针位移好位置，然后逆时针返回，绘制文字
+        // 再顺时针还原位移，最后还原旋转
+        // 若先旋转一次绘制直接还原，文字将会旋转
+        ctx.rotate(angle);
+        ctx.translate(0, -radius * 0.85);
+        ctx.rotate(-angle);
+        ctx.fillText(i.toString(), 0, 0);
+        ctx.rotate(angle);
+        ctx.translate(0, radius * 0.85);
+        ctx.rotate(-angle);
+      }
+    };
+
+    const drawTime = (ctx, radius) => {
+      const now = new Date();
+      const hour = now.getHours() % 12;
+      const min = now.getMinutes();
+      const sec = now.getSeconds();
+      
+      const secAng = Math.PI / 30 * sec;
+      const minAng = (Math.PI * min + Math.PI / 60 * sec) / 30;
+      const hourAng = (Math.PI * hour + Math.PI / 60 * min + Math.PI * sec / 3600) / 6;
+
+      drawHand(ctx, hourAng, radius * 0.08, radius * 0.4);
+      drawHand(ctx, minAng, radius * 0.05, radius * 0.6);
+      drawHand(ctx, secAng, radius * 0.025, radius * 0.8);
+    }
+    const drawHand = (ctx, angle, width, len) => {
+      ctx.beginPath();
+      ctx.lineCap = "round";
+      ctx.fillStyle = '#333';
+      ctx.lineWidth = width;
+      ctx.moveTo(0,0);
+      ctx.rotate(angle);
+      ctx.lineTo(0, -len);
+      ctx.rotate(-angle);
+      ctx.stroke();
+    }
+    drawClock(radius);
+  </script>
+</body>
+</html>
