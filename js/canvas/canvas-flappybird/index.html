@@ -2,13 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
   <title>Canvas flappybird</title>
   <style>
     .game-canvas {
       width: 100vw;
       height: 100vh;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    * {  
+      -webkit-touch-callout: none;  
+      -webkit-user-select: none;  
+      -khtml-user-select: none;  
+      -moz-user-select: none;  
+      -ms-user-select: none;  
+      user-select: none;  
+    }
+    canvas {
+      pointer-events: none; 
     }
   </style>
 </head>
