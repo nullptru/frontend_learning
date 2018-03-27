@@ -195,8 +195,8 @@ class Border {
         this.bird.setGravity(0.05);
       }
     };
-    this.canvas.addEventListener('mousedown', this.directionMouseDownListener);
-    this.canvas.addEventListener('mouseup', this.directionMouseUpListener);
+    document.addEventListener('mousedown', this.directionMouseDownListener);
+    document.addEventListener('mouseup', this.directionMouseUpListener);
 
     // touch
     this.directionTouchStartListener = ({ changedTouches }) => {
@@ -250,8 +250,8 @@ class Border {
         this.bird.setGravity(0.05);
       }
     };
-    this.canvas.addEventListener('touchstart', this.directionTouchStartListener);
-    this.canvas.addEventListener('touchend', this.directionTouchEndListener);
+    document.addEventListener('touchstart', this.directionTouchStartListener);
+    document.addEventListener('touchend', this.directionTouchEndListener);
   }
 
   addClickListener() {
@@ -273,7 +273,8 @@ class Border {
           this.restart();
         }
     };
-    this.canvas.addEventListener('click', this.restartListener);
+    document.addEventListener('click', this.restartListener);
+    document.addEventListener('touchstart', this.restartListener);
   }
 
   addKeyListener() {
@@ -342,7 +343,8 @@ class Border {
   }
 
   restart() {
-    this.canvas.removeEventListener('click', this.restartListener);
+    document.removeEventListener('click', this.restartListener);
+    document.removeEventListener('touchstart', this.restartListener);
     this.blocks = [];
     this.bird = new Component(this.ctx);
     this.bird.setGravity(0.05);
@@ -396,6 +398,8 @@ const isMobile = () => {
 if (isMobile()) {
   let root = document.getElementById('root');
   root.style.transform = "rotate(90deg)";
+  document.body.style.height = `${window.innerHeight}px`;
+  document.body.style.width = `${window.innerWidth}px`;
   const border = new Border(window.innerHeight, window.innerWidth, false);
   border.init();
   border.render();
