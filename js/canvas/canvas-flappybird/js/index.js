@@ -73,16 +73,20 @@ class Border {
     this.frameNo =  0;
     this.width = width;
     this.height = height;
+    // when device is pc, use horizaontal mode, otherwise, use vertical mode
     this.isHorizontal = isHorizontal;
 
     this.canvas = undefined;
+    // canvas context
     this.ctx = undefined;
 
     this.bird = undefined;
     this.blocks = [];
+    // used only when game is over
     this.restartListener = undefined;
-    this.directionMouseDownListener = undefined;
+    this.restartTouchListener = undefined;
     
+    // operator image
     let image_left = new Image();
     image_left.src = './img/arrow_left.png';
     let image_right = new Image();
@@ -103,10 +107,13 @@ class Border {
   }
 
   init() {
+    // append canvas to root
     const root = document.getElementById('root');
     this.canvas = this.createCanvas();
     root.appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d');
+
+    // draw init bird
     this.bird = new Component(this.ctx);
     this.bird.setGravity(0.05);
     // add listener
@@ -145,117 +152,90 @@ class Border {
     return point.x > this.width - 110 && point.x < this.width - 30 && point.y > this.height - 110 && point.y < this.height - 30;
   }
 
-  addOperatorListener() {
+  _operatorUp(ev) {
+    let mouse;
+    if (!this.isHorizontal) {
+      mouse = {
+        x: ev.pageY - this.canvas.offsetTop,
+        y: this.height - (ev.pageX - this.canvas.offsetLeft),
+      };
+    } else {
+      mouse = {
+        x: ev.pageX - this.canvas.offsetLeft,
+        y: ev.pageY - this.canvas.offsetTop,
+      };
+    }
+    if (this.isInLeft(mouse) || this.isInRight(mouse)) {
+      this.bird.setHorizonSpeed(0);
+    } else if (this.isInDown(mouse) || this.isInUp(mouse)) {
+      this.bird.setVerticalSpeed(0);
+    }
+
+    if (this.isInJump(mouse)) {
+      this.bird.setGravity(0.05);
+    }
+  }
+
+  _operatorDown(ev) {
+    let mouse;
+    if (!this.isHorizontal) {
+      mouse = {
+        x: ev.pageY - this.canvas.offsetTop,
+        y: this.height - (ev.pageX - this.canvas.offsetLeft),
+      };
+    } else {
+      mouse = {
+        x: ev.pageX - this.canvas.offsetLeft,
+        y: ev.pageY - this.canvas.offsetTop,
+      };
+    }
+    if (this.isInLeft(mouse)) {
+      this.bird.setHorizonSpeed(-2);
+    } else if (this.isInRight(mouse)) {
+      this.bird.setHorizonSpeed(2);
+    } else if (this.isInDown(mouse)) {
+      this.bird.setVerticalSpeed(2);
+    } else if (this.isInUp(mouse)) {
+      this.bird.setVerticalSpeed(-2);
+    }
+    if (this.isInJump(mouse)) {
+      this.bird.setGravity(-0.1);
+    }
+  }
+
+  _addMouseOperatorListener() {
     this.directionMouseDownListener = (ev) => {
-      let mouse;
-      if (!this.isHorizontal) {
-        mouse = {
-          x: ev.pageY - this.canvas.offsetTop,
-          y: this.height - (ev.pageX - this.canvas.offsetLeft),
-        };
-      } else {
-        mouse = {
-          x: ev.pageX - this.canvas.offsetLeft,
-          y: ev.pageY - this.canvas.offsetTop,
-        };
-      }
-      if (this.isInLeft(mouse)) {
-        this.bird.setHorizonSpeed(-2);
-      } else if (this.isInRight(mouse)) {
-        this.bird.setHorizonSpeed(2);
-      } else if (this.isInDown(mouse)) {
-        this.bird.setVerticalSpeed(2);
-      } else if (this.isInUp(mouse)) {
-        this.bird.setVerticalSpeed(-2);
-      }
-      if (this.isInJump(mouse)) {
-        this.bird.setGravity(-0.1);
-      }
+      this._operatorDown(ev);
     };
     this.directionMouseUpListener = (ev) => {
-      let mouse;
-      if (!this.isHorizontal) {
-        mouse = {
-          x: ev.pageY - this.canvas.offsetTop,
-          y: this.height - (ev.pageX - this.canvas.offsetLeft),
-        };
-      } else {
-        mouse = {
-          x: ev.pageX - this.canvas.offsetLeft,
-          y: ev.pageY - this.canvas.offsetTop,
-        };
-      }
-      if (this.isInLeft(mouse) || this.isInRight(mouse)) {
-        this.bird.setHorizonSpeed(0);
-      } else if (this.isInDown(mouse) || this.isInUp(mouse)) {
-        this.bird.setVerticalSpeed(0);
-      }
-
-      if (this.isInJump(mouse)) {
-        this.bird.setGravity(0.05);
-      }
+      this._operatorUp(ev);
     };
     document.addEventListener('mousedown', this.directionMouseDownListener);
     document.addEventListener('mouseup', this.directionMouseUpListener);
+  }
 
-    // touch
+  _addTouchOperatorListener() {
     this.directionTouchStartListener = ({ changedTouches }) => {
+      event.preventDefault(); // prevent touch event
       const ev = changedTouches[0];
-      let mouse;
-      if (!this.isHorizontal) {
-        mouse = {
-          x: ev.pageY - this.canvas.offsetTop,
-          y: this.height - (ev.pageX - this.canvas.offsetLeft),
-        };
-      } else {
-        mouse = {
-          x: ev.pageX - this.canvas.offsetLeft,
-          y: ev.pageY - this.canvas.offsetTop,
-        };
-      }
-      if (this.isInLeft(mouse)) {
-        this.bird.setHorizonSpeed(-2);
-      } else if (this.isInRight(mouse)) {
-        this.bird.setHorizonSpeed(2);
-      } else if (this.isInDown(mouse)) {
-        this.bird.setVerticalSpeed(2);
-      } else if (this.isInUp(mouse)) {
-        this.bird.setVerticalSpeed(-2);
-      }
-      if (this.isInJump(mouse)) {
-        this.bird.setGravity(-0.1);
-      }
+      this._operatorDown(ev);
     };
     this.directionTouchEndListener = ({ changedTouches }) => {
+      event.preventDefault(); // prevent touch event
       const ev = changedTouches[0];
-      let mouse;
-      if (!this.isHorizontal) {
-        mouse = {
-          x: ev.pageY - this.canvas.offsetTop,
-          y: this.height - (ev.pageX - this.canvas.offsetLeft),
-        };
-      } else {
-        mouse = {
-          x: ev.pageX - this.canvas.offsetLeft,
-          y: ev.pageY - this.canvas.offsetTop,
-        };
-      }
-      if (this.isInLeft(mouse) || this.isInRight(mouse)) {
-        this.bird.setHorizonSpeed(0);
-      } else if (this.isInDown(mouse) || this.isInUp(mouse)) {
-        this.bird.setVerticalSpeed(0);
-      }
-
-      if (this.isInJump(mouse)) {
-        this.bird.setGravity(0.05);
-      }
+      this._operatorUp(ev);
     };
     document.addEventListener('touchstart', this.directionTouchStartListener);
     document.addEventListener('touchend', this.directionTouchEndListener);
   }
 
+  addOperatorListener() {
+    this._addMouseOperatorListener();
+    this._addTouchOperatorListener();
+  }
+
   addClickListener() {
-    this.restartListener = (ev) => {
+    const restart = (ev) => {
       let mouse;
       if (!this.isHorizontal) {
         mouse = {
@@ -273,8 +253,16 @@ class Border {
           this.restart();
         }
     };
+    this.restartListener = (ev) => {
+      restart(ev);
+    };
+    this.restartTouchListener = ({ changedTouches }) => {
+      event.preventDefault(); // prevent touch event
+      const ev = changedTouches[0];
+      restart(ev);
+    }
     document.addEventListener('click', this.restartListener);
-    document.addEventListener('touchstart', this.restartListener);
+    document.addEventListener('touchstart', this.restartTouchListener);
   }
 
   addKeyListener() {
@@ -324,6 +312,7 @@ class Border {
       this.ctx.fillText('Restart', this.width / 2 - 28, this.height / 2 + 5);
       return -1;
     }
+
     this.blocks = this.blocks.filter(obstacleFilter => obstacleFilter.x > -obstacleFilter.width).map((obstacle) => {
       obstacle.update();
       return obstacle;
@@ -343,8 +332,10 @@ class Border {
   }
 
   restart() {
+    // remove gameover listener
     document.removeEventListener('click', this.restartListener);
-    document.removeEventListener('touchstart', this.restartListener);
+    document.removeEventListener('touchstart', this.restartTouchListener);
+    // reset data
     this.blocks = [];
     this.bird = new Component(this.ctx);
     this.bird.setGravity(0.05);
@@ -395,17 +386,22 @@ const isMobile = () => {
   }
 }
 
-if (isMobile()) {
-  let root = document.getElementById('root');
-  root.style.transform = "rotate(90deg)";
-  document.body.style.height = `${window.innerHeight}px`;
-  document.body.style.width = `${window.innerWidth}px`;
-  const border = new Border(window.innerHeight, window.innerWidth, false);
-  border.init();
-  border.render();
-  console.log(navigator.userAgent, 'mobile');
-} else {
-  let root = document.getElementById('root');
-  root.innerText = '请在移动端打开';
-  console.log(navigator.userAgent, 'PC');
+const main = () => {
+  if (isMobile()) {
+    let root = document.getElementById('root');
+    root.style.transform = "rotate(90deg)";
+    document.body.style.height = `${window.innerHeight}px`;
+    document.body.style.width = `${window.innerWidth}px`;
+    const border = new Border(window.innerHeight, window.innerWidth, false);
+    border.init();
+    border.render();
+    console.log(navigator.userAgent, 'mobile');
+  } else {
+    const border = new Border(undefined, undefined, true);
+    border.init();
+    border.render();
+    console.log(navigator.userAgent, 'PC');
+  }
 }
+
+main();
