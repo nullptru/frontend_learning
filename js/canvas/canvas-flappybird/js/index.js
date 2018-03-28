@@ -397,6 +397,10 @@ const main = () => {
     border.render();
     console.log(navigator.userAgent, 'mobile');
   } else {
+    let root = document.getElementById('root');
+    const textEle = document.createElement('div');
+    textEle.innerText = "操纵方式为两种，可通过界面上的操作键进行点击操作，也可通过键盘wasd进行方向，j进行跳跃操作";
+    root.appendChild(textEle);
     const border = new Border(undefined, undefined, true);
     border.init();
     border.render();
