@@ -52,7 +52,7 @@ const encodeUtf8 = (str) => {
 const decodeUtf8 = (bytes) => {
   let encoded = "";
   for (let i = 0; i < bytes.length; i++) {
-      encoded += '%' + bytes[i].toString(16);
+      encoded += '%' + padNumber(bytes[i].toString(16), 2);
   }
   return decodeURIComponent(encoded);
 };
@@ -78,9 +78,21 @@ const decodeLBS = (imagePixels) => {
   let len = imagePixels.length;
   let endCount = 0;
   let bit = '';
+  let hasData = true;
+
+  // 检验是否含有数据
+  for (let i = 0; i < 16; i += 1) {
+    if ((i + 1) % 4 === 0) continue; // a通道不处理
+    bit = imagePixels[i] % 2;
+    if (bit === 0) { hasData = false; break; }
+  }
+  bit = '';
+  if (!hasData) { return "" }
 
   for (let i = 0; i < len; i += 1) {
-    if (endCount >= 16 && i > 30 && result.length % 8 === 0) break;
+    if (endCount >= 16 && i > 32 && result.length % 8 === 0) {
+      break;
+    }
     if ((i + 1) % 4 === 0) continue; // a通道不处理
     bit = imagePixels[i] % 2;
     result += bit;

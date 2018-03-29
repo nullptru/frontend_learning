@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片隐写</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="abstraction">
+    <h3>图片隐写</h3>
+    <div>隐写术是一门关于信息隐藏的技巧与科学，所谓信息隐藏指的是不让除预期的接收者之外的任何人知晓信息的传递事件或者信息的内容。</div>
+    <div>通过将信息写入图片的方式，既可以起到数字签名的目的(虽然很容易破坏), 同时，也可以用来传递些比较重要或者比较奇怪的信息呢(#^.^#)或者也可以用来神奇的表白？如果对方能读懂~(´▽｀)</div>
+  </div>
+  <a href="https://github.com/nullptru/frontend_learning/tree/master/js/LBS" target="blank" style="position: absolute; right: 0; top: 0;">
+    <img src="./github.png" style="width: 100px"/>
+  </a>
+  <div class="container">
+      <div id="input" class="input">
+        <header>文本写入</header>
+        <textarea id="input-data" rows="4" class="flex-item data-area" placeholder="把你想表达的心意～全部写下来吧！"></textarea>
+        <div style="font-size: 11px" class="flex-item">支持png/jpg格式图片</div>
+        <input type="file" id="input-file" class="flex-item" accept="image/png, image/jpeg, image/jpg"/>
+        <div>
+          <button id="input-btn" class="operator flex-item">写入</button>
+          <span id="input-error"></span>
+        </div>
+        <a href id="input-link" style="display: none">下载原图</a>
+        <img id="input-canvas" class="input-canvas">
+      </div>
+      <div class="output">
+        <header>文本解析</header>
+        <textarea id="output-data" rows="4" class="flex-item data-area" readonly placeholder="最终的结果会展现在这里哦"></textarea>
+        <div style="font-size: 11px" class="flex-item">选择已写入数据的图片进行解析</div>
+        <input type="file" id="output-file" class="flex-item" accept="image/png, image/jpeg, image/jpg"/>
+        <div>
+          <button id="output-btn" class="operator flex-item">解析</button>
+          <span id="output-error"></span>
+        </div>
+        <a href id="output-link" style="display: none">下载原图</a>
+        <img id="output-canvas" class="output-canvas" />
+      </div>
+  </div>
+  <footer>Made By <a href="http://geasscn.me" style="margin: 0 4px"> Geass </a></footer>
+  <script src="./js/utils.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>
