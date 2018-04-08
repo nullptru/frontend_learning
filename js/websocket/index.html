@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Socket Test</title>
+  <style>
+    .flexbox {
+      display: flex; flex-direction: column; width: 300px;
+    }
+    .flexbox * {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="flexbox">
+      <button id="connect">Connect</button>
+      <button id="disconnect">Disconnect</button>
+      <textarea id="data" rows="3" style="min-height: 60px;min-width: 40%;"></textarea>
+      <button id="send">Send</button>
+      <div id="output"></div>
+  </div>
+  <script>
+    class WebSocketTest {
+      constructor() {
+      }
+
+      init() {
+        const endpoint = 'ws://echo.websocket.org/';
+        this.wsClient = new WebSocket(endpoint);
+        this.wsClient.onopen = this.onOpen.bind(this);
+        this.wsClient.onclose = this.onClose.bind(this);
+        this.wsClient.onmessage = this.onMessage.bind(this);
+        this.wsClient.onerror = this.onError.bind(this);
+      }
+
+      onOpen() {
+        this.sendOutput('Connected');
+      }
+
+      onClose() {
+        this.sendOutput('Disconnected');
+      }
+
+      onMessage(msg) {
+        this.sendOutput(`Receive: ${msg.data}`);
+      }
+
+      onError(error) {
+        this.sendOutput(`There is something error: ${error}`);
+      }
+
+      sendOutput(msg = '') {
+        console.log(msg.data || msg);
+        const line = document.createElement('div');
+        line.innerText = msg.data || msg;
+        document.getElementById('output').appendChild(line)
+      }
+
+      sendMsg(msg) {
+        this.wsClient.send(msg);
+        this.sendOutput(`Send: ${msg}`);
+      }
+
+      close() {
+        this.wsClient.close();
+      }
+    }
+    const newWsTest = new WebSocketTest();
+    document.getElementById('connect').addEventListener('click', () => {
+      newWsTest.init();
+    });
+
+    document.getElementById('disconnect').addEventListener('click', () => {
+      newWsTest.close();
+    });
+
+    document.getElementById('send').addEventListener('click', () => {
+      newWsTest.sendMsg(document.getElementById('data').value);
+    });
+  </script>
+</body>
+</html>
