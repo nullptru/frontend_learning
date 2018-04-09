@@ -1,0 +1,204 @@
+[debug] [2018-04-09T07:12:04.042Z] ----------------------------------------------------------------------
+[debug] [2018-04-09T07:12:04.044Z] Command:       /Users/Geass/.nvm/versions/node/v9.2.0/bin/node /Users/Geass/.nvm/versions/node/v9.2.0/bin/firebase login
+[debug] [2018-04-09T07:12:04.045Z] CLI Version:   3.18.2
+[debug] [2018-04-09T07:12:04.045Z] Platform:      darwin
+[debug] [2018-04-09T07:12:04.045Z] Node Version:  v9.2.0
+[debug] [2018-04-09T07:12:04.045Z] Time:          Mon Apr 09 2018 15:12:04 GMT+0800 (CST)
+[debug] [2018-04-09T07:12:04.045Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on any device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=275950432&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2018-04-09T07:12:26.200Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AABGtY46zBWKXCmOq9-vJLwQM9X8II-KU-Rb-xD1ve5ABt5PdJXIPQvfdRniNjTWjsm-ygtCLwJtMGGGyT30z2o',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:12:26 GMT+0800 (CST)
+[debug] [2018-04-09T07:13:24.869Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AAAa8G2vyG5D78cCJ14AQrTAPP1-apWj0uHfKIuxmWVfhMvL0_jG6F8WnKrCaFl8LmbCiEwNzH5l_-RQ1cndqwk',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:13:24 GMT+0800 (CST)
+[debug] [2018-04-09T07:13:41.684Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:13:43.452Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AAAa8G2vyG5D78cCJ14AQrTAPP1-apWj0uHfKIuxmWVfhMvL0_jG6F8WnKrCaFl8LmbCiEwNzH5l_-RQ1cndqwk',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:13:43 GMT+0800 (CST)
+[debug] [2018-04-09T07:14:17.763Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AACxZUWJnS8haDKkMXXNNo1QTOY9jZzTIAcSDOt4XMf1BXAil5zCR3b5AakPiUVHPQM51exFm0nEiq-5QCNe8gE',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:14:17 GMT+0800 (CST)
+[debug] [2018-04-09T07:14:40.464Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:14:59.063Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:15:33.176Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:15:50.096Z] ----------------------------------------------------------------------
+[debug] [2018-04-09T07:15:50.099Z] Command:       /Users/Geass/.nvm/versions/node/v9.2.0/bin/node /Users/Geass/.nvm/versions/node/v9.2.0/bin/firebase login
+[debug] [2018-04-09T07:15:50.100Z] CLI Version:   3.18.2
+[debug] [2018-04-09T07:15:50.100Z] Platform:      darwin
+[debug] [2018-04-09T07:15:50.100Z] Node Version:  v9.2.0
+[debug] [2018-04-09T07:15:50.100Z] Time:          Mon Apr 09 2018 15:15:50 GMT+0800 (CST)
+[debug] [2018-04-09T07:15:50.100Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on any device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=360326&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2018-04-09T07:16:49.781Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AABqONYtA17_LVduad6vmts459GZ9Vb6hH7Z_dqwas6en9pT3DekDZGOI4OnWrCoPb79yRC6THeXgC3QfYvlF6s',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:16:49 GMT+0800 (CST)
+[debug] [2018-04-09T07:18:05.025Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:18:13.803Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AABqONYtA17_LVduad6vmts459GZ9Vb6hH7Z_dqwas6en9pT3DekDZGOI4OnWrCoPb79yRC6THeXgC3QfYvlF6s',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:18:13 GMT+0800 (CST)
+[debug] [2018-04-09T07:19:29.435Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:21:33.428Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AABqONYtA17_LVduad6vmts459GZ9Vb6hH7Z_dqwas6en9pT3DekDZGOI4OnWrCoPb79yRC6THeXgC3QfYvlF6s',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:21:33 GMT+0800 (CST)
+[debug] [2018-04-09T07:21:41.335Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AABqONYtA17_LVduad6vmts459GZ9Vb6hH7Z_dqwas6en9pT3DekDZGOI4OnWrCoPb79yRC6THeXgC3QfYvlF6s',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:21:41 GMT+0800 (CST)
+[debug] [2018-04-09T07:21:50.705Z] ----------------------------------------------------------------------
+[debug] [2018-04-09T07:21:50.707Z] Command:       /Users/Geass/.nvm/versions/node/v9.2.0/bin/node /Users/Geass/.nvm/versions/node/v9.2.0/bin/firebase login
+[debug] [2018-04-09T07:21:50.707Z] CLI Version:   3.18.2
+[debug] [2018-04-09T07:21:50.707Z] Platform:      darwin
+[debug] [2018-04-09T07:21:50.707Z] Node Version:  v9.2.0
+[debug] [2018-04-09T07:21:50.708Z] Time:          Mon Apr 09 2018 15:21:50 GMT+0800 (CST)
+[debug] [2018-04-09T07:21:50.708Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on any device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=266417618&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2018-04-09T07:22:05.911Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AADZwJOpqgxwf3KSpxclj49ej4wIFdex3mxceYyD4veuKuF-cIOAkzVytVS9OAHsC7f8EobPt2tSUxsbmovJlP4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:22:05 GMT+0800 (CST)
+[debug] [2018-04-09T07:23:21.242Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:23:29.802Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AADZwJOpqgxwf3KSpxclj49ej4wIFdex3mxceYyD4veuKuF-cIOAkzVytVS9OAHsC7f8EobPt2tSUxsbmovJlP4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:23:29 GMT+0800 (CST)
+[debug] [2018-04-09T07:24:45.025Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:159:13)
+    at Request.onRequestError (/Users/Geass/.nvm/versions/node/v9.2.0/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:159:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:159:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[debug] [2018-04-09T07:25:23.891Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AADZwJOpqgxwf3KSpxclj49ej4wIFdex3mxceYyD4veuKuF-cIOAkzVytVS9OAHsC7f8EobPt2tSUxsbmovJlP4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Mon Apr 09 2018 15:25:23 GMT+0800 (CST)
